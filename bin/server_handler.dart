@@ -24,7 +24,14 @@ class ServeHandler {
       Map json = jsonDecode(result);
       String name = json['name'] ?? 'Anônimo';
       if (name == "Gustavo") {
-        return Response.ok(json['name']);
+        Map result = {
+          "token": " asdnkdlad81023189",
+          "name": name,
+        };
+        return Response.ok(
+          jsonEncode(result),
+          headers: {'content-type': 'application/json'},
+        );
       }
       return Response.notFound("Usuário não encontrado");
     });
